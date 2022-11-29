@@ -12,7 +12,7 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   color: rgb(63, 63, 63);
-  background-color: #f3f3f3;
+  background-color: #ffffff;
   height: 100vh;
   padding: 2rem;
 }
@@ -27,5 +27,4 @@ nav{
 .header_title{
     text-align: center;
     padding-top: 10%;
-    T
 }

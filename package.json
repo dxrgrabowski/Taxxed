@@ -1,0 +1,22 @@
+{
+  "name": "taxxed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxrgrabowski/Taxxed.git"
+  },
+  "author": "Dawid Grabowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dxrgrabowski/Taxxed/issues"
+  },
+  "homepage": "https://github.com/dxrgrabowski/Taxxed#readme",
+  "devDependencies": {
+    "parcel": "^2.8.0"
+  }
+}
