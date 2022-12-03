@@ -1,3 +1,5 @@
+/* SCSS RGB */
+/* SCSS Gradient */
 * {
   margin: 0;
   padding: 0;
@@ -10,21 +12,22 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(63, 63, 63);
   background-color: #ffffff;
   height: 100vh;
   padding: 2rem;
 }
 
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: medium;
 }
 
-.header_title{
-    text-align: center;
-    padding-top: 10%;
-}
+.header_title {
+  text-align: center;
+  padding-top: 10%;
+  background-color: rgb(235, 60, 20);
+}/*# sourceMappingURL=style.css.map */
