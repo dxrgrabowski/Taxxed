@@ -1,5 +1,6 @@
 /* SCSS RGB */
 $black: rgba(0, 0, 0, 1);
+$dark-grey: rgba(23, 23, 23, 1);
 $rust: rgba(188, 59, 9, 1);
 $scarlet: rgba(235, 60, 20, 1);
 $orange-web: rgba(255, 164, 17, 1);
@@ -17,33 +18,74 @@ $gradient-bottom-left: linear-gradient(315deg, #000000ff, #000000ff, #BC3B09ff, 
 $gradient-radial: radial-gradient(#000000ff, #000000ff, #BC3B09ff, #FFA411ff, #9C0000ff);
 
 * {
-  margin: 0;
-  padding: 0;
+  margin: 10;
+  padding: 10;
   box-sizing: inherit;
+  list-style: none;
 }
 
 html {
-  font-size: 75%;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  color: rgb(63, 63, 63);
-  background-color: #ffffff;
-  height: 100vh;
-  padding: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(63, 63, 63);
+    background-color: $dark-grey;
+    color: antiquewhite;
+    height: 100vh;
+    padding: 2rem;
+    list-style: none;
+    margin-left: 15%;
+    margin-right: 15%;
+  
+  .top-nav{
+      display: flex;
+      justify-content: space-between;
+    align-items: center;
+    font-size: medium;
+  }
+
+  .header_title{
+      text-align: center;
+      padding-top: 10%;
+      form {
+        margin: 2%;
+
+        .form-fill{
+            width: 20%;
+            border-radius: 50px;
+            border-color: $scarlet;
+            border-width: 5px;
+            background: $dark-grey;
+            &::after{
+                background:rgba(156, 0, 0, 1);
+            }
+        }
+      }
+      .employment-form{
+          justify-content: space-around;
+          
+          span{
+            padding-left: 1%;
+            cursor: pointer;
+        } 
+      }  
+    }
+    .calculation-description{
+      margin-top: 30px;  
+      text-align: center;
+      list-style: none;
+      ul{
+      list-style: none;
+      }
+    }
+
+    .after-calculation{
+      padding-top: 40px;
+    }
 }
 
-nav{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: medium;
-}
-
-.header_title{
-    text-align: center;
-    padding-top: 10%;
-    background-color: $scarlet;
+footer{
+    padding: 10px 20px 10px 20px;
 }

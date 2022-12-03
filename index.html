@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="styles\style.css">
     <title>Taxxed | Discover the Tax Difference </title>
 </head>
+
 <body>
-    <nav class="nav">
-    <img src="resources\images\taxxed-lr.png" alt="Taxxed logo" class="nav_logo" id="logo" width="200"
+    <nav class="top-nav">
+    <img src="resources\images\taxxed-lr.png" alt="Taxxed logo" rel="home" class="nav_logo" id="logo" width="200"
     <ul class="nav_links">
            <li class="nav_item">
                <a class="nav_link" href ='section_1'>
@@ -25,18 +26,38 @@
         </li>
        </ul>
    </nav>
+   
    <div class="header_title">
-    <h1>
-           Select your form of employment and fill tax data
-       </h1> 
+    <h1>Select your form of employment and fill tax data</h1> 
+    <form>
+        <input class="form-fill "type="number">
+    </form>
+    <nav class="employment-form">
+        <span>Umowa o Pracę</span>
+        <span>Umowa zlecenie</span>
+        <span>Umowa o dzieło</span>
+        <span>Umowa B2B</span>
+    </nav>
    </div>
-   <div class="employment_form">
-        <label class="inline-flex relative items-center cursor-pointer">
-            <input type="checkbox" value="" class="sr-only peer">
-            <div class="w-11 h-6 mx-auto bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Toggle me</span>
-        </label>
+   <div class="calculation-description">
+    <h2>Twoje wynagrodzenie wynosi </h2>
+    <ul>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+    </ul>
+   </div>
+   <div class="after-calculation">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+   </div>
 
-   </div>
 </body>
+<footer>
+    <h4>Created by Dawid Grabowski</h4>
+</footer>
 </html>

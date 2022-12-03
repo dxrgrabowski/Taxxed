@@ -1,33 +1,69 @@
 /* SCSS RGB */
 /* SCSS Gradient */
 * {
-  margin: 0;
-  padding: 0;
+  margin: 10;
+  padding: 10;
   box-sizing: inherit;
+  list-style: none;
 }
 
 html {
-  font-size: 75%;
   box-sizing: border-box;
 }
 
 body {
   font-family: "Poppins", sans-serif;
   color: rgb(63, 63, 63);
-  background-color: #ffffff;
+  background-color: rgb(23, 23, 23);
+  color: antiquewhite;
   height: 100vh;
   padding: 2rem;
+  list-style: none;
+  margin-left: 15%;
+  margin-right: 15%;
 }
-
-nav {
+body .top-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: medium;
 }
-
-.header_title {
+body .header_title {
   text-align: center;
   padding-top: 10%;
-  background-color: rgb(235, 60, 20);
+}
+body .header_title form {
+  margin: 2%;
+}
+body .header_title form .form-fill {
+  width: 20%;
+  border-radius: 50px;
+  border-color: rgb(235, 60, 20);
+  border-width: 5px;
+  background: rgb(23, 23, 23);
+}
+body .header_title form .form-fill::after {
+  background: rgb(156, 0, 0);
+}
+body .header_title .employment-form {
+  justify-content: space-around;
+}
+body .header_title .employment-form span {
+  padding-left: 1%;
+  cursor: pointer;
+}
+body .calculation-description {
+  margin-top: 30px;
+  text-align: center;
+  list-style: none;
+}
+body .calculation-description ul {
+  list-style: none;
+}
+body .after-calculation {
+  padding-top: 40px;
+}
+
+footer {
+  padding: 10px 20px 10px 20px;
 }/*# sourceMappingURL=style.css.map */
