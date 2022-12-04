@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <nav class="top-nav">
+    <div class="div-top-nav"><nav class="top-nav">
     <img src="resources\images\taxxed-lr.png" alt="Taxxed logo" rel="home" class="nav_logo" id="logo" width="200"
     <ul class="nav_links">
            <li class="nav_item">
@@ -25,18 +25,22 @@
            </a>
         </li>
        </ul>
-   </nav>
+       <img src="resources\images\Favicon\moon.svg" id="dark-mode-icon"/>
+   </nav></div>
    
    <div class="header_title">
     <h1>Select your form of employment and fill tax data</h1> 
     <form>
-        <input class="form-fill "type="number">
+        <div class="input-area">
+            <input id="salary-form-fill" placeholder="Put your salary here" type="number"/>
+            <button id="salary-submit">Submit!</button>
+        </div>
     </form>
     <nav class="employment-form">
-        <span>Umowa o Pracę</span>
-        <span>Umowa zlecenie</span>
-        <span>Umowa o dzieło</span>
-        <span>Umowa B2B</span>
+        <span id="form-uop" class="employment-type">Umowa o Pracę</span>
+        <span id="form-uz" class="employment-type">Umowa zlecenie</span>
+        <span id="form-od" class="employment-type">Umowa o dzieło</span>
+        <span id="form-b2b" class="employment-type">Umowa B2B</span>
     </nav>
    </div>
    <div class="calculation-description">

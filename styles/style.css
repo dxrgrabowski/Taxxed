@@ -1,5 +1,4 @@
 /* SCSS RGB */
-/* SCSS Gradient */
 * {
   margin: 10;
   padding: 10;
@@ -13,44 +12,78 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  color: rgb(63, 63, 63);
-  background-color: rgb(23, 23, 23);
+  background: linear-gradient(150deg, rgb(12, 11, 42) 3%, rgb(159, 11, 11) 39%, rgb(255, 175, 0) 100%);
   color: antiquewhite;
   height: 100vh;
   padding: 2rem;
   list-style: none;
+  margin: 0 15% 0 15%;
   margin-left: 15%;
   margin-right: 15%;
 }
-body .top-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: medium;
-}
 body .header_title {
   text-align: center;
-  padding-top: 10%;
+  margin-top: 60px;
+  height: 190px;
 }
-body .header_title form {
-  margin: 2%;
+body .header_title .input-area {
+  display: inline-flex;
+  height: 7%;
 }
-body .header_title form .form-fill {
-  width: 20%;
+body .header_title .input-area #salary-form-fill {
+  width: 250px;
+  height: 50px;
   border-radius: 50px;
   border-color: rgb(235, 60, 20);
   border-width: 5px;
-  background: rgb(23, 23, 23);
+  background: rgb(46, 6, 6);
+  color: antiquewhite;
+  font-size: medium;
+  font-weight: bold;
+  text-align: center;
+  transition: all 500ms ease;
 }
-body .header_title form .form-fill::after {
-  background: rgb(156, 0, 0);
+body .header_title .input-area #salary-form-fill::-moz-placeholder {
+  text-align: center;
+  color: antiquewhite;
 }
-body .header_title .employment-form {
-  justify-content: space-around;
+body .header_title .input-area #salary-form-fill:-ms-input-placeholder {
+  text-align: center;
+  color: antiquewhite;
 }
-body .header_title .employment-form span {
-  padding-left: 1%;
-  cursor: pointer;
+body .header_title .input-area #salary-form-fill::placeholder {
+  text-align: center;
+  color: antiquewhite;
+}
+body .header_title .input-area #salary-form-fill:active::-moz-placeholder {
+  color: transparent;
+}
+body .header_title .input-area #salary-form-fill:active:-ms-input-placeholder {
+  color: transparent;
+}
+body .header_title .input-area #salary-form-fill:active::placeholder {
+  color: transparent;
+}
+body .header_title .input-area #salary-form-fill::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+body .header_title .input-area #salary-form-fill:focus {
+  background-color: transparent;
+  outline: none;
+  background: rgb(46, 6, 6);
+}
+body .header_title .input-area #salary-submit {
+  margin-left: 10px;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  border-color: rgb(235, 60, 20);
+  border-width: 5px;
+  color: antiquewhite;
+  background: rgb(46, 6, 6);
+  font-size: medium;
+  font-weight: bold;
 }
 body .calculation-description {
   margin-top: 30px;
@@ -62,6 +95,49 @@ body .calculation-description ul {
 }
 body .after-calculation {
   padding-top: 40px;
+}
+
+.div-top-nav {
+  height: 80px;
+  border-bottom: 3px solid antiquewhite;
+}
+.div-top-nav .top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: medium;
+}
+.div-top-nav .top-nav #dark-mode-icon {
+  width: 2%;
+  cursor: pointer;
+  filter: invert(80%);
+  transition: all 0.4s ease-in-out;
+}
+.div-top-nav .top-nav #dark-mode-icon:hover {
+  filter: invert(20%);
+}
+
+.employment-form {
+  justify-content: space-around;
+  padding: 15px;
+  display: flexbox;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.employment-form .employment-type {
+  display: inline-block;
+  margin-left: 2%;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 500ms;
+  border-bottom: 2px solid rgba(250, 235, 215, 0);
+}
+.employment-form .employment-type:hover {
+  color: rgb(235, 60, 20);
+  transform: translateY(-10px);
+  border-color: rgb(250, 235, 215);
 }
 
 footer {
