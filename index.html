@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="resources\images\Favicon\tx-lr-red.png">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles\style.css">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="src\styles\main.css">
+    <script defer src="src\js\script.js"></script>
     <title>Taxxed | Discover the Tax Difference </title>
 </head>
 
@@ -29,32 +31,24 @@
    </nav></div>
    
    <div class="header_title">
-    <h1>Select your form of employment and fill tax data</h1> 
-    <form>
-        <div class="input-area">
-            <input id="salary-form-fill" placeholder="Put your salary here" type="number"/>
-            <button id="salary-submit">Submit!</button>
-        </div>
-    </form>
-    <nav class="employment-form">
-        <span id="form-uop" class="employment-type">Umowa o Pracę</span>
-        <span id="form-uz" class="employment-type">Umowa zlecenie</span>
-        <span id="form-od" class="employment-type">Umowa o dzieło</span>
-        <span id="form-b2b" class="employment-type">Umowa B2B</span>
-    </nav>
+        <h1>Wprowadź kwotę brutto, oraz wybierz formę umowy</h1> 
+        <form>
+            <div class="input-area">
+                <input id="salary-form-fill" placeholder="Wprowadź kwotę brutto" type="number"/>
+                <button id="salary-submit">Start!</button>
+            </div>
+        </form>
+        <nav class="employment-form">
+            <span id="form-uop" class="employment-type">Umowa o Pracę</span>
+            <span id="form-uz" class="employment-type">Umowa zlecenie</span>
+            <span id="form-od" class="employment-type">Umowa o dzieło</span>
+            <span id="form-b2b" class="employment-type">Umowa B2B</span>
+        </nav>
    </div>
-   <div class="calculation-description">
+   <section class="calculation-description">
     <h2>Twoje wynagrodzenie wynosi </h2>
-    <ul>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-    </ul>
-   </div>
+    <div class="chart-wrapper"></div>   
+   </section>
    <div class="after-calculation">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

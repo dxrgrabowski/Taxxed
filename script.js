@@ -1,2 +1,0 @@
-//Głównym przesłaniem strony będzie uświadomienie użytkownika o ilości jego pracy, przepalanej w postaci pieniądza przez państwo. Będzie ukazany bazowy koszt jaki ponosi pracodawca zatrudniając pracownika oraz, pieniądze pracownika zabierane w formie podatków.
-document.getElementById("salary-form-fill").addEventListener()

@@ -1,0 +1,45 @@
+.div-top-nav{
+  height: 80px;
+  border-bottom: 3px solid rgb(240, 145, 22);
+  .top-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: medium;
+    #dark-mode-icon{
+      width: 2%;
+      cursor: pointer;
+      filter: invert(80%);
+      transition: all 0.4s ease-in-out;
+      &:hover{
+        filter: invert(20%);
+      }
+    }
+  }
+}
+// UMOWY 
+.employment-form{
+  justify-content: space-around;
+  margin: 30px;
+  display: flexbox;
+  user-select: none;
+  
+  .employment-type{
+    display: inline-block;
+    margin-left: 2%;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 500ms;
+    border-bottom: 2px solid rgba(250,235,215,0);
+    &:hover{
+      color: $scarlet;
+      transform: translateY(-10px);
+      border-color: rgba(250,235,215,1);;
+      
+    } 
+  }
+}
+
+footer{
+    padding: 10px 20px 10px 20px;
+}
