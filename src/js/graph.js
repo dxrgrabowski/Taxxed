@@ -1,56 +1,4 @@
-//Głównym przesłaniem strony będzie uświadomienie użytkownika o ilości jego pracy, przepalanej w postaci pieniądza przez państwo. Będzie ukazany bazowy koszt jaki ponosi pracodawca zatrudniając pracownika oraz, pieniądze pracownika zabierane w formie podatków.
-
-class GraphSet{
-  title;
-  percentage;
-  constructor(percentage,title){
-    this.title = title;
-    this.percentage = percentage;
-  }
-}
-
-const formUop = {
-  taxFieldNumber: 5,
-
-}
-const formB2b = {
-  taxFieldNumber: 7,
-};
-
-let employmentForm;
-let salary;
-let showStatistics; //true when Submit clicked
-
-function UodTax(value) {
-  dataset = []
-  let tax = value * 0.096;
-  dataset.push(new GraphSet(tax/value*100,`Do ręki ${value-tax}`));
-  dataset.push(GraphSet(100 - (tax / value) * 100, `Zaliczka na podatek ${value - tax}`));
-}
-
-function clickedEmplType(id){
-  employmentForm=id;
-}
-
-const employmentForms = ['formUop','formUzl','formUod','formB2b']
-//Submit button click
-document
-  .querySelector("#salary-submit")
-  .addEventListener("click", () => {
-    UodTax(salary);
-    draw();
-    showStatistics = true;
-  });
-
-//Salary fill
-document
-  .querySelector("#salary-form-fill")
-  .addEventListener(
-    "keyup",
-    () => (salary = Number(document.querySelector("#salary-form-fill").value))
-  );
-
-let dataset = [];
+const dataset = [];
 //console.log(el)
 // let colors = ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd'];
 let colors = [
@@ -122,11 +70,7 @@ let draw = function () {
   svg.append("g").attr("class", "labels");
 
   // define slice
-  let slice = svg
-    .select(".slices")
-    .datum(dataset)
-    .selectAll("path")
-    .data(pie);
+  let slice = svg.select(".slices").datum(dataset).selectAll("path").data(pie);
   slice
     .enter()
     .append("path")
@@ -160,7 +104,7 @@ let draw = function () {
     .attr("dy", "0.35em")
     .style("opacity", 0)
     .style("fill", (d, i) => colors[i])
-    .text((d, i, x) => dataset[i])
+    .text((d, i) => colors[i])
     .attr("transform", (d) => {
       // calculate outerArc centroid for 'this' slice
       let pos = outerArc.centroid(d);
@@ -174,10 +118,7 @@ let draw = function () {
     .duration(secDur)
     .style("opacity", 1);
 
-  let polyline = svg
-    .select(".lines")
-    .selectAll("polyline")
-    .data(pie(dataset));
+  let polyline = svg.select(".lines").selectAll("polyline").data(pie(dataset));
 
   polyline
     .enter()
