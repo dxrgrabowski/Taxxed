@@ -1,14 +1,5 @@
 //Głównym przesłaniem strony będzie uświadomienie użytkownika o ilości jego pracy, przepalanej w postaci pieniądza przez państwo. Będzie ukazany bazowy koszt jaki ponosi pracodawca zatrudniając pracownika oraz, pieniądze pracownika zabierane w formie podatków.
 
-class GraphSet{
-  title;
-  percentage;
-  constructor(percentage,title){
-    this.title = title;
-    this.percentage = percentage;
-  }
-}
-
 const formUop = {
   taxFieldNumber: 5,
 
@@ -22,11 +13,31 @@ let salary;
 let showStatistics; //true when Submit clicked
 
 function UodTax(value) {
-  dataset = []
+  dataset = [];
+  title = [];
   let tax = value * 0.096;
-  dataset.push(new GraphSet(tax/value*100,`Do ręki ${value-tax}`));
-  dataset.push(GraphSet(100 - (tax / value) * 100, `Zaliczka na podatek ${value - tax}`));
+  dataset.push(tax / value * 100);
+  title.push(`Do ręki ${value-tax}`)
+  dataset.push(100 - (tax / value) * 100);
+  title.push( `Zaliczka na podatek ${tax}`)
 }
+function UopTax(value) {
+  dataset = [];
+  title = [];
+  
+  let eme = value * 0.0976;
+  let rent = value * 0.015;
+  let chor = value * 0.0245;
+  let aftercollection = value - eme - rent - chor - 250;
+  let tax = aftercollection * 0.12;
+
+  dataset.push((tax / value) * 100);
+  title.push(`Do ręki ${value - tax}`);
+  dataset.push(100 - (tax / value) * 100);
+  title.push(`Zaliczka na podatek ${tax}`);
+}
+function UzlTax(value) { }
+function B2bTax(value) {}
 
 function clickedEmplType(id){
   employmentForm=id;
@@ -51,20 +62,21 @@ document
   );
 
 let dataset = [];
+let title = []
 //console.log(el)
-// let colors = ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd'];
-let colors = [
-  "#67001f",
-  "#b2182b",
-  "#d6604d",
-  "#f4a582",
-  "#fddbc7",
-  "#e0e0e0",
-  "#bababa",
-  "#878787",
-  "#4d4d4d",
-  "#1a1a1a",
-];
+let colors = ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd'];
+// let colors = [
+//   "#67001f",
+//   "#b2182b",
+//   "#d6604d",
+//   "#f4a582",
+//   "#fddbc7",
+//   "#e0e0e0",
+//   "#bababa",
+//   "#878787",
+//   "#4d4d4d",
+//   "#1a1a1a",
+// ];
 
 const width = document.querySelector(".chart-wrapper").offsetWidth;
 const height = document.querySelector(".chart-wrapper").offsetHeight;
@@ -160,7 +172,7 @@ let draw = function () {
     .attr("dy", "0.35em")
     .style("opacity", 0)
     .style("fill", (d, i) => colors[i])
-    .text((d, i, x) => dataset[i])
+    .text((d, i, x) => title[i])
     .attr("transform", (d) => {
       // calculate outerArc centroid for 'this' slice
       let pos = outerArc.centroid(d);
