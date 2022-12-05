@@ -53,13 +53,18 @@ body .header_title .input-area #salary-form-fill::placeholder {
   text-align: center;
   color: antiquewhite;
 }
-body .header_title .input-area #salary-form-fill:active::-moz-placeholder {
+body .header_title .input-area #salary-form-fill:focus::-moz-placeholder {
+  -moz-transition: all 260ms ease;
+  transition: all 260ms ease;
   color: transparent;
 }
-body .header_title .input-area #salary-form-fill:active:-ms-input-placeholder {
+body .header_title .input-area #salary-form-fill:focus:-ms-input-placeholder {
+  -ms-transition: all 260ms ease;
+  transition: all 260ms ease;
   color: transparent;
 }
-body .header_title .input-area #salary-form-fill:active::placeholder {
+body .header_title .input-area #salary-form-fill:focus::placeholder {
+  transition: all 260ms ease;
   color: transparent;
 }
 body .header_title .input-area #salary-form-fill::-webkit-inner-spin-button {
@@ -82,6 +87,7 @@ body .header_title .input-area #salary-submit {
   background: rgb(46, 6, 6);
   font-size: medium;
   font-weight: bold;
+  cursor: pointer;
 }
 body .calculation-description {
   margin-top: 30px;
@@ -136,6 +142,10 @@ body .after-calculation {
   color: rgb(235, 60, 20);
   transform: translateY(-10px);
   border-color: rgb(250, 235, 215);
+}
+.employment-form .employment-type:active {
+  transform: translateY(-10px);
+  border-color: rgb(3, 2, 1);
 }
 
 footer {

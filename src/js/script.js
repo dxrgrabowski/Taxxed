@@ -1,26 +1,50 @@
 //Głównym przesłaniem strony będzie uświadomienie użytkownika o ilości jego pracy, przepalanej w postaci pieniądza przez państwo. Będzie ukazany bazowy koszt jaki ponosi pracodawca zatrudniając pracownika oraz, pieniądze pracownika zabierane w formie podatków.
-document.getElementById("salary-form-fill").addEventListener();
+const formUop = {
+  taxFieldNumber: 5,
 
-const salary = 10000;
+}
+const formB2b = {
+  taxFieldNumber: 7,
+};
 
 let employmentForm;
+let salary;
+let showStatistics; //true when Submit clicked
 
-const dataset = [1, 1, 1, 1, 1, 1, 1, 3, 2, 2];
+function UodTax(value) {
+  let tax = value * 0.096;
+  dataset.push(value);
+  dataset.push(tax);
+}
 
+function clickedEmplType(id){
+  employmentForm=id;
+}
+
+const employmentForms = ['formUop','formUzl','formUod','formB2b']
+//Submit button click
+document
+  .querySelector("#salary-submit")
+  .addEventListener("click", () => {
+    UodTax(salary);
+    draw();
+    showStatistics = true;
+  });
+
+//Salary fill
+document
+  .querySelector("#salary-form-fill")
+  .addEventListener(
+    "keyup",
+    () => (salary = Number(document.querySelector("#salary-form-fill").value))
+  );
+
+  
+const dataset = [];
+//console.log(el)
 // let colors = ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd'];
-// let colors = ['#67001f', '#b2182b', '#d6604d', '#f4a582', '#fddbc7', '#e0e0e0', '#bababa', '#878787', '#4d4d4d', '#1a1a1a'];
-const colors = [
-  "#9e0142",
-  "#d53e4f",
-  "#f46d43",
-  "#fdae61",
-  "#fee08b",
-  "#e6f598",
-  "#abdda4",
-  "#66c2a5",
-  "#3288bd",
-  "#5e4fa2",
-];
+let colors = ['#67001f', '#b2182b', '#d6604d', '#f4a582', '#fddbc7', '#e0e0e0', '#bababa', '#878787', '#4d4d4d', '#1a1a1a'];
+
 
 const width = document.querySelector(".chart-wrapper").offsetWidth;
 const height = document.querySelector(".chart-wrapper").offsetHeight;
@@ -30,7 +54,6 @@ const arcAnimDelay = 150;
 const arcAnimDur = 3000;
 const secDur = 1000;
 const secIndividualdelay = 150;
-console.log(height);
 
 let radius;
 
@@ -147,7 +170,7 @@ let draw = function () {
     });
 };
 
-draw();
+//draw();
 
 let button = document.querySelector("button");
 

@@ -34,9 +34,12 @@
     &:hover{
       color: $scarlet;
       transform: translateY(-10px);
-      border-color: rgba(250,235,215,1);;
-      
+      border-color: rgba(250,235,215,1);
     } 
+    &:active{                       //Dodać wciśnięty przycisk
+      transform: translateY(-10px);
+      border-color: rgb(3, 2, 1);   
+    }
   }
 }
 

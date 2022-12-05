@@ -32,17 +32,17 @@
    
    <div class="header_title">
         <h1>Wprowadź kwotę brutto, oraz wybierz formę umowy</h1> 
-        <form>
-            <div class="input-area">
-                <input id="salary-form-fill" placeholder="Wprowadź kwotę brutto" type="number"/>
-                <button id="salary-submit">Start!</button>
-            </div>
-        </form>
+        
+        <div class="input-area">
+            <input id="salary-form-fill" placeholder="Wprowadź kwotę brutto" type="number"/>
+            <button id="salary-submit">Start!</button>
+        </div>
+        
         <nav class="employment-form">
-            <span id="form-uop" class="employment-type">Umowa o Pracę</span>
-            <span id="form-uz" class="employment-type">Umowa zlecenie</span>
-            <span id="form-od" class="employment-type">Umowa o dzieło</span>
-            <span id="form-b2b" class="employment-type">Umowa B2B</span>
+            <span id="formUop" class="employment-type" onclick="clickedEmplType(this.id)">Umowa o Pracę</span>
+            <span id="formUzl" class="employment-type" onclick="clickedEmplType(this.id)">Umowa zlecenie</span>
+            <span id="formUod" class="employment-type" onclick="clickedEmplType(this.id)">Umowa o dzieło</span>
+            <span id="formB2b" class="employment-type" onclick="clickedEmplType(this.id)">Umowa B2B</span>
         </nav>
    </div>
    <section class="calculation-description">

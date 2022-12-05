@@ -42,8 +42,9 @@ body {
             text-align: center;
             color:antiquewhite;
           }
-          &:active{
+          &:focus{
             &::placeholder{
+              transition: all 260ms ease;
               color:transparent;
             }
           }
@@ -69,7 +70,7 @@ body {
         background: rgb(46, 6, 6);
         font-size: medium;
         font-weight: bold; 
-        
+        cursor: pointer;
       }
     }  
     }
