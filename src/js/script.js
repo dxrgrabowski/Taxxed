@@ -1,4 +1,4 @@
-//Głównym przesłaniem strony będzie uświadomienie użytkownika o ilości jego pracy, przepalanej w postaci pieniądza przez państwo. Będzie ukazany bazowy koszt jaki ponosi pracodawca zatrudniając pracownika oraz, pieniądze pracownika zabierane w formie podatków.
+'use strict'
 
 const formUop = {
   taxFieldNumber: 5,
@@ -7,6 +7,30 @@ const formUop = {
 const formB2b = {
   taxFieldNumber: 7,
 };
+
+function calcPercent(main, ...values) {
+  let sum = 0;
+  for (let i = 0; i < values.length; i++) {
+    sum += values[i];
+    dataset.push({ perc: values[i] / main, value: Math.round(values[i]) });
+  }
+  dataset.push({ perc: (main - sum) / main, value: Math.round(main-sum)});
+  return dataset;
+}
+
+function prepareDatasets(dataset) {
+  var values = dataset.map((obj) => obj.value);
+  var titles = dataset.map((obj) => obj.title);
+  globalThis.percentages = dataset.map((obj) => obj.perc);
+}
+
+function makeTitle(dataset) {
+  dataset[0].title= `Składka rentowa ${dataset[0].value}`;
+  dataset[1].title = `Składka chorobowa ${dataset[1].value}`;
+  dataset[2].title = `Składka emerytalna ${dataset[2].value}`;
+  dataset[3].title = `Zaliczka na podatek ${dataset[3].value}`;
+  dataset[4].title = `Do ręki ${dataset[4].value}`;
+}
 
 let employmentForm;
 let salary;
@@ -19,22 +43,21 @@ function UodTax(value) {
   dataset.push(tax / value * 100);
   title.push(`Do ręki ${value-tax}`)
   dataset.push(100 - (tax / value) * 100);
-  title.push( `Zaliczka na podatek ${tax}`)
+  title.push(`Zaliczka na podatek ${tax}`);
 }
-function UopTax(value) {
+function UopTax(brutto) {
   dataset = [];
   title = [];
   
-  let eme = value * 0.0976;
-  let rent = value * 0.015;
-  let chor = value * 0.0245;
-  let aftercollection = value - eme - rent - chor - 250;
-  let tax = aftercollection * 0.12;
-
-  dataset.push((tax / value) * 100);
-  title.push(`Do ręki ${value - tax}`);
-  dataset.push(100 - (tax / value) * 100);
-  title.push(`Zaliczka na podatek ${tax}`);
+  let rent = brutto * 0.015;
+  let chor = brutto * 0.0245;
+  let eme = brutto * 0.0976;
+  let tax = (brutto - eme - rent - chor - 250) * 0.12;
+  dataset.push(...calcPercent(brutto, eme, rent, chor, tax));
+  makeTitle(dataset);
+  globalThis.staty = Array.from(new Set(dataset));
+  prepareDatasets(staty);
+  console.log(staty.map(obj=>obj.perc))
 }
 function UzlTax(value) { }
 function B2bTax(value) {}
@@ -48,7 +71,7 @@ const employmentForms = ['formUop','formUzl','formUod','formB2b']
 document
   .querySelector("#salary-submit")
   .addEventListener("click", () => {
-    UodTax(salary);
+    UopTax(salary);
     draw();
     showStatistics = true;
   });
@@ -65,18 +88,7 @@ let dataset = [];
 let title = []
 //console.log(el)
 let colors = ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd'];
-// let colors = [
-//   "#67001f",
-//   "#b2182b",
-//   "#d6604d",
-//   "#f4a582",
-//   "#fddbc7",
-//   "#e0e0e0",
-//   "#bababa",
-//   "#878787",
-//   "#4d4d4d",
-//   "#1a1a1a",
-// ];
+// let colors = ["#67001f", "#b2182b", "#d6604d", "#f4a582", "#fddbc7", "#e0e0e0", "#bababa", "#878787", "#4d4d4d", "#1a1a1a"];
 
 const width = document.querySelector(".chart-wrapper").offsetWidth;
 const height = document.querySelector(".chart-wrapper").offsetHeight;
@@ -136,7 +148,7 @@ let draw = function () {
   // define slice
   let slice = svg
     .select(".slices")
-    .datum(dataset)
+    .datum(staty.map(obj=>obj.perc))
     .selectAll("path")
     .data(pie);
   slice
@@ -164,7 +176,10 @@ let draw = function () {
 
   let midAngle = (d) => d.startAngle + (d.endAngle - d.startAngle) / 2;
 
-  let text = svg.select(".labels").selectAll("text").data(pie(dataset));
+  let text = svg
+    .select(".labels")
+    .selectAll("text")
+    .data(pie(percentages));
 
   text
     .enter()
@@ -172,7 +187,7 @@ let draw = function () {
     .attr("dy", "0.35em")
     .style("opacity", 0)
     .style("fill", (d, i) => colors[i])
-    .text((d, i, x) => title[i])
+    .text((d, i) => staty[i].title)
     .attr("transform", (d) => {
       // calculate outerArc centroid for 'this' slice
       let pos = outerArc.centroid(d);
@@ -189,7 +204,7 @@ let draw = function () {
   let polyline = svg
     .select(".lines")
     .selectAll("polyline")
-    .data(pie(dataset));
+    .data(pie(percentages));
 
   polyline
     .enter()
@@ -211,8 +226,6 @@ let draw = function () {
 };
 
 //draw();
-
-let button = document.querySelector("button");
 
 let replay = () => {
   d3.selectAll(".slices")
