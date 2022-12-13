@@ -7,6 +7,21 @@ const formUop = {
 const formB2b = {
   taxFieldNumber: 7,
 };
+let slice1 = 4;
+let slice2 = 4;
+let sumstoo = 100 - slice1 - slice2;
+
+function test() {
+  dataset.push({ perc: slice1, value: slice1 });
+  dataset.push({ perc: slice2, value: slice2 });
+  dataset.push({ perc: sumstoo, value: sumstoo });
+  //dataset.push({ perc: 0.1, value: 1 });
+  //dataset.push({ perc: 0.1, value: 1 });
+  makeTitle(dataset);
+  globalThis.staty = Array.from(new Set(dataset));
+  prepareDatasets(staty);
+  console.log(dataset);
+}
 
 function calcPercent(main, ...values) {
   let sum = 0;
@@ -28,8 +43,8 @@ function makeTitle(dataset) {
   dataset[0].title= `Składka rentowa ${dataset[0].value}`;
   dataset[1].title = `Składka chorobowa ${dataset[1].value}`;
   dataset[2].title = `Składka emerytalna ${dataset[2].value}`;
-  dataset[3].title = `Zaliczka na podatek ${dataset[3].value}`;
-  dataset[4].title = `Do ręki ${dataset[4].value}`;
+ // dataset[3].title = `Zaliczka na podatek ${dataset[3].value}`;
+  //dataset[4].title = `Do ręki ${dataset[4].value}`;
 }
 
 let employmentForm;
@@ -72,6 +87,7 @@ document
   .querySelector("#salary-submit")
   .addEventListener("click", () => {
     UopTax(salary);
+    //test();
     draw();
     showStatistics = true;
   });
