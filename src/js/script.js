@@ -1,5 +1,7 @@
 'use strict'
 
+import * as tool from './tools.js'
+
 const formUop = {
   taxFieldNumber: 5,
 
@@ -27,9 +29,13 @@ function calcPercent(main, ...values) {
   let sum = 0;
   for (let i = 0; i < values.length; i++) {
     sum += values[i];
-    dataset.push({ perc: values[i] / main, value: Math.round(values[i]) });
+    console.log((values[i] / main) * 100);
+    dataset.push({ perc: tool.hyperboleEq(values[i] / main*100), value: Math.round(values[i]) });
   }
-  dataset.push({ perc: (main - sum) / main, value: Math.round(main-sum)});
+  dataset.push({
+    perc: tool.hyperboleEq(((main - sum) / main) * 100),
+    value: Math.round(main - sum),
+  });
   return dataset;
 }
 
@@ -42,24 +48,26 @@ function prepareDatasets(dataset) {
 function makeTitle(dataset) {
   dataset[0].title= `Składka rentowa ${dataset[0].value}`;
   dataset[1].title = `Składka chorobowa ${dataset[1].value}`;
-  dataset[2].title = `Składka emerytalna ${dataset[2].value}`;
- // dataset[3].title = `Zaliczka na podatek ${dataset[3].value}`;
-  //dataset[4].title = `Do ręki ${dataset[4].value}`;
+  dataset[2].title = `Składka zdrowotna ${dataset[2].value}`;
+  dataset[3].title = `Składka emerytalna ${dataset[3].value}`;
+  dataset[4].title = `Zaliczka na podatek ${dataset[4].value}`;
+  dataset[5].title = `Do ręki ${dataset[5].value}`;
 }
 
 let employmentForm;
 let salary;
 let showStatistics; //true when Submit clicked
 
-function UodTax(value) {
+function UodTax(brutto) {
   dataset = [];
   title = [];
-  let tax = value * 0.096;
-  dataset.push(tax / value * 100);
-  title.push(`Do ręki ${value-tax}`)
-  dataset.push(100 - (tax / value) * 100);
+  let tax = brutto * 0.096;
+  dataset.push(tax / brutto * 100);
+  title.push(`Do ręki ${brutto-tax}`)
+  dataset.push(100 - (tax / brutto) * 100);
   title.push(`Zaliczka na podatek ${tax}`);
 }
+
 function UopTax(brutto) {
   dataset = [];
   title = [];
@@ -67,15 +75,27 @@ function UopTax(brutto) {
   let rent = brutto * 0.015;
   let chor = brutto * 0.0245;
   let eme = brutto * 0.0976;
-  let tax = (brutto - eme - rent - chor - 250) * 0.12;
-  dataset.push(...calcPercent(brutto, eme, rent, chor, tax));
+  let zdr = (brutto - eme - rent - chor) * 0.09;
+  let tax = (brutto - eme - rent - chor - (brutto - eme - rent - chor)*0.2) * 0.12;
+  dataset.push(...calcPercent(brutto, eme, rent, chor, zdr, tax));
   makeTitle(dataset);
   globalThis.staty = Array.from(new Set(dataset));
   prepareDatasets(staty);
-  console.log(staty.map(obj=>obj.perc))
+  console.log(staty.map(obj => obj.perc));
+  console.log(staty);
 }
-function UzlTax(value) { }
-function B2bTax(value) {}
+function UzlTax(brutto) { 
+  let rent = brutto * 0.015;
+  let chor = brutto * 0.0245;
+  let eme = brutto * 0.0976;
+  let zdr = (brutto - eme - rent - chor) * 0.09;
+  let tax =
+    (brutto - eme - rent - chor - (brutto - eme - rent - chor) * 0.2) * 0.12;
+  dataset.push(...calcPercent(brutto, eme, rent, chor, zdr, tax));
+  makeTitle(dataset);
+  globalThis.staty = Array.from(new Set(dataset));
+}
+function B2bTax(brutto) {}
 
 function clickedEmplType(id){
   employmentForm=id;
